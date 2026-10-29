@@ -9,7 +9,7 @@ if (${use_installed_dependencies})
     # New macro_utils_c and umock_c install their CMake configs into
     # <prefix>/cmake/ which is non-standard. Tell find_package to look there.
     set(_sdk_cmake_config_path "${CMAKE_INSTALL_PREFIX}/cmake")
-    if (NOT azure_macro_utils_cFOUND AND NOT macro_utils_cFOUND)
+    if (NOT azure_macro_utils_c_FOUND AND NOT macro_utils_c_FOUND)
         find_package(macro_utils_c CONFIG QUIET PATHS "${_sdk_cmake_config_path}")
         if (NOT macro_utils_c_FOUND)
             find_package(azure_macro_utils_c CONFIG QUIET PATHS "${_sdk_cmake_config_path}")
@@ -18,7 +18,7 @@ if (${use_installed_dependencies})
             endif()
         endif()
     endif ()
-    if (NOT umock_cFOUND)
+    if (NOT umock_c_FOUND)
         find_package(umock_c CONFIG QUIET PATHS "${_sdk_cmake_config_path}")
         if (NOT umock_c_FOUND)
             # umock_c may not install a Config.cmake; just verify headers exist.
